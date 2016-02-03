@@ -18,7 +18,7 @@ A quick search of Stack Overflow questions will return a heap of different direc
 
 The solution I've used doesn't require writing a specific directive or adding any additional attributes or decoration to my page content - all I've done is set a short timeout (like, 1ms short) inside of which I manually call Prism.highlightElement(elem).
 
-{% highlight js %}
+```js
 // Content is my service, getBySlug returns the page by name
 Content.getBySlug($routeParams.slug, type).then(function (data) {
     $scope.bodyText = $sce.trustAsHtml(data.BodyText);
@@ -32,6 +32,6 @@ $scope.$watch('bodyText', function (newVal, oldVal) {
         });
     }, 1);
 });
-{% endhighlight %}
+```
 
 Angular purists would likely choke on their coffee, but it does the trick for my use-case.
