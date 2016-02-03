@@ -1,0 +1,124 @@
+.navbar {
+    border-radius:0;
+    border:none;
+    padding: 0;
+    background:transparent;   
+    transition:opacity ease-in-out .2s;
+    max-width: 200px;
+
+    @include min768 {
+        opacity:0;
+    }
+
+    > a {
+        text-decoration:none;
+	    background:transparent;
+
+        &:focus + ul, &:active + ul {
+            display:block;
+        }
+    }
+
+    ul {
+        clear: both;
+        list-style-type: none;
+        padding: 0;
+        width:200px;
+        opacity:0;
+        margin-top:20px;
+        transition:opacity .2s ease-in-out;
+
+        @include min768 {
+            opacity:1;
+        }
+
+        a {
+            padding: 3px 15px;
+            display: block;
+            font-size:2rem;
+            transition:all .2s ease-in-out;
+            color:#555;
+
+            &:hover {
+                background:#555;
+                text-decoration:none;
+                color:#fff
+            }
+
+            &:active, &:focus {
+                text-decoration:none;
+            }
+        }
+    }
+
+    .navbar-brand {
+        opacity:0;
+
+        @include min768 {
+            opacity:1;
+        }
+    }
+
+    button {
+      background: #222;
+      color: #fff;
+      position: fixed;
+      top: 0;
+      right:0;
+      border-radius: 0;
+      width: 50px;
+      height: 50px;
+      border:none;
+      padding:10px;
+
+      &:active, &:hover, &:focus {
+        color:#fff;
+        }
+
+      span {
+        display: block;
+        height: 5px;
+        background: #aaa;
+        position:absolute;
+        top:22px;
+        left:10px;
+        right:10px;
+
+        &:before, &:after {
+            content:'';
+            display:block;
+            height:5px;
+            background:#aaa;
+            position:absolute;
+            left:0;
+            top:12px;
+            right:0;
+        }
+
+        &:after {
+            top:auto;
+            bottom:12px;
+        }
+      }
+
+    }
+}
+
+.nav-in {
+
+    .navbar, .navbar ul {
+	    opacity:1;
+        transition:opacity .2s ease-in-out .2s;
+        z-index:1;
+    }
+
+    .container-fluid {
+        transform:translateX(115px);
+        opacity:.1;
+
+        @include min768 {
+            transform:none;
+            opacity:1;
+        }
+    }
+}

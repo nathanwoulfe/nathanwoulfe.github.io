@@ -1,0 +1,49 @@
+$validColor: #78FA89;
+$invalidColor: #FA787E;
+
+input, textarea, .form-control, .form-control:focus, .form-control:active {
+    
+    border-radius:0;
+    border:none;
+    border-bottom:5px solid #fff;
+    box-shadow:none;
+    background:#eee;
+    min-height:45px;
+    padding-top:10px;
+
+    &:focus {
+        border-bottom:5px solid #555;
+    }
+
+    &.ng-invalid.ng-touched {
+        border-bottom-color: $invalidColor;
+        
+        &:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0px 1000px #fff inset;        
+        }
+    }
+
+    &.ng-valid.ng-touched {
+        border-bottom-color: $validColor;
+
+        &:-webkit-autofill {
+             -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+        }
+    }    
+}
+
+button[type="submit"] {
+    border-radius:0;
+    
+    //&[disabled] {
+    //    background:#ccc;
+    //    border-color:#bbb;
+    //}
+}
+
+.alert {
+    margin-top:30px;
+    border-radius:0;
+    border:none;
+}
+  

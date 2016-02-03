@@ -1,0 +1,89 @@
+/* content */
+
+.latest-items.latest-articles {
+    padding-left:0;
+    padding-bottom:0;    
+    max-width:none;
+}
+
+.contact-row {
+    @include min768 {
+        padding-left:235px;
+    }
+}
+
+h2 {
+	color:#555;
+	font-weight:700;
+	margin-bottom: 45px;
+	line-height: 1.2;
+	font-size: 3.5rem;
+}
+
+.main-content-row {
+    
+    padding:45px 30px;
+
+    @include min768 {
+	    max-width:1000px;
+	    padding: 60px 60px 60px 50px;
+    	border-left: 200px solid transparent;
+    }
+}
+
+.overview {
+
+    p:first-of-type {
+        font-weight:300;
+        font-size:1.6rem;
+	    line-height:1.4;
+
+        @include min768 {
+            font-size:2rem;
+            line-height:1.6;
+            margin-top:5px;
+        }
+    }
+
+    h4 {
+        text-align:left;
+        transform:none;
+        margin-left:0;
+        padding:0 0 15px 0;
+    }
+
+    img {
+        margin-bottom:15px;
+    }
+
+    section {
+        margin-bottom:60px;
+    }
+}
+
+.umbNewsItem {
+    
+    img {
+        float:right;
+    }
+}
+
+.main-image {
+    border-left:10px solid transparent;    
+
+    @include min768 {
+        border-left-width:200px;
+    }
+}
+
+.project-items {
+    padding-left:200px;
+    min-height:100vh;
+    padding-bottom:60px;
+
+    @include min1100 {
+        &.latest-items > div {
+          max-width: 300px;
+        }
+    }
+}
