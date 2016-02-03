@@ -13,6 +13,7 @@ It's relatively straight forward to push content from Archetype fieldsets into y
 First, you need a custom indexer, it's going to look something like this:
 
 {% highlight csharp %}
+
 namespace Your.Namespace {
     class CustomIndexer : UmbracoContentIndexer {
         protected override Dictionary<string, string> GetDataToIndex(XElement node, string type)      
@@ -21,6 +22,7 @@ namespace Your.Namespace {
         }
     }
 }
+
 {% endhighlight %}
 
 Now it just needs the magic:
