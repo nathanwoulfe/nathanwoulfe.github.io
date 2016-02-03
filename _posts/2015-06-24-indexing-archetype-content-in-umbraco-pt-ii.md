@@ -6,13 +6,13 @@ category: blog
 
 While a custom indexer will absolutely get the job done, it's overkill.
 
-There's no real need to spin up a custom indexer for Archetype content, given the exposed events in Umbraco - OnGatheringNodeData in particular.
+There's no real need to spin up a custom indexer for Archetype content, given the exposed events in Umbraco - `OnGatheringNodeData` in particular.
 
 You might be familiar with this event, and how it can be used to manipulate node data before it is pumped into your Examine indexes. Given that an Archetype fieldset is, at its heart, just a data construct, we can use similar logic to parse out the content we require and add it to our index.
 
 The guts of the code is practically the same as it is when using a custom indexer, only we identify the Archetype fieldset slightly differently:
 
-{% highlight c# %}
+```csharp
 private void CustomGatheringNodeDataMethod(object sender, IndexingNodeDataEventArgs nodeData)
 {            
     if (nodeData.Fields.ContainsKey("archetypeAlias")) 
@@ -39,7 +39,7 @@ private void CustomGatheringNodeDataMethod(object sender, IndexingNodeDataEventA
         }
     }
 }
-{% endhighlight %}
+```
 
 That's just very quick cut at how you could index Archetype data - depending on your content configuration the actual process will be different. You might want to index the Archetype data in specific fields rather than just packing it into a generic field like the example.
 
