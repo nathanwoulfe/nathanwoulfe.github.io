@@ -24,22 +24,22 @@ Same problem - async content arrives after my template has compiled.
 
 The solution was pretty straightforward - I watch for changes in the object containing the CodePen markup. In the watch, I set a brief timeout, an when that expires, I can traverse the DOM to find the CodePen embed, and recompile it:
 
-{% highlight js %}
+```js
 Content.getBySlug($routeParams.slug, type).then(function (response)
 {
     $scope.html = $sce.trustAsHtml(response.html);
-});
 
-$scope.$watch('html', function ()
-{
-    setTimeout(function ()
+    $scope.$watch('html', function ()
     {
-        var codepen = document.querySelectorAll('.codepen');
-        angular.forEach(codepen, function(elm){
-            $compile(elm)($scope);
-        });          
-    }, 1);
-});
-{% endhighlight %}
+        setTimeout(function ()
+        {
+            var codepen = document.querySelectorAll('.codepen');
+            angular.forEach(codepen, function(elm){
+                $compile(elm)($scope);
+            });          
+        }, 1);
+    });
+}
+```
 
 The rest, as they say in the classics, is history. I'm just happy with CodePen embeds.
