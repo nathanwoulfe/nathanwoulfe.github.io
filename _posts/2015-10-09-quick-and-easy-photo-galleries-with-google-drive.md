@@ -16,11 +16,11 @@ The plan was simple - a quick SPA to display x images per page, where each thumb
 
 There's a heap of documented methods for getting data out of Google Drive.
 
-I decided to simply fire my requests to googleapis.com/drive/v2/files, with the appropriate query for the thumbnails and full-sized images.
+I decided to simply fire my requests to `googleapis.com/drive/v2/files`, with the appropriate query for the thumbnails and full-sized images.
 
 Smushed into an AngularJs service, that looks something like this: 
 
-{% highlight js %}
+```js
 .factory('photoService',[ '$http',function ($http) {
     return {
         get: function(urlBase, folderId, key) {
@@ -39,13 +39,13 @@ photoService.get(urlBase, folderId, apiKey)
         $scope.images = resp.items;
     }
 });
-{% endhighlight %}
+```
 
-The parameters to the function are largely self-explanatory - urlBase is the URL referenced earlier, folderId is the Google Drive folder ID and key is the API key.
+The parameters to the function are largely self-explanatory - `urlBase` is the URL referenced earlier, `folderId` is the Google Drive folder ID and `key` is the API key.
 
 It returns a handy JSON blob containing everything we need to know about the images - except their URL.
 
-For that, we simply construct it - docs.google.com/uc?id=imageId
+For that, we simply construct it - `docs.google.com/uc?id=imageId`
 
 From there, we can do anything we like with the 700 or so images lurking over in Drive.
 
