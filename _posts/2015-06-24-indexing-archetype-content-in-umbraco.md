@@ -12,7 +12,7 @@ It's relatively straight forward to push content from Archetype fieldsets into y
 
 First, you need a custom indexer, it's going to look something like this:
 
-{% highlight c# %}
+```csharp
 namespace Your.Namespace {
     class CustomIndexer : UmbracoContentIndexer {
         protected override Dictionary<string, string> GetDataToIndex(XElement node, string type)      
@@ -21,11 +21,11 @@ namespace Your.Namespace {
         }
     }
 }
-{% endhighlight %}
+```
 
 Now it just needs the magic:
 
-{% highlight c# %}
+```csharp
 Dictionary<string,string> data = base.GetDataToIndex(node, type);
 string content = "";      
             
@@ -52,7 +52,7 @@ if (data.ContainsKey("archetypeAlias"))
     }
     return data;
 }
-{% endhighlight %}
+```
 
 So what's happening? It's really pretty straightforward - we're checking for a key that matches the alias of our Archetype property. Finding that, we deserialise the data and iterate the Archetype fieldsets.
 
@@ -62,6 +62,6 @@ Once we've iterated the Archetype fieldsets, we can smash the content string int
 
 To use the indexer, just reference it in ExamineSettings.config, like so:
 
-{% highlight c# %}
+```
 add name="SearchIndexer" type="Your.Namespace.CustomIndexer, Your.Namespace"
-{% endhighlight %}
+```
