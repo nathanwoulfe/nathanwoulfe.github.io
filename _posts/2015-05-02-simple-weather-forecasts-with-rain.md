@@ -23,20 +23,20 @@ Code-wise, there's not much to it (it's all on [GitHub](https://github.com/natha
 
 The merge function accepts two parameters - being the objects we want to merge. Parameter a is the merged object, b is the object for merging. We unpack a into a cache variable, then unpack b into the same variable.
 
-{% highlight js %}
+```js
 function merge (a, b) {
     var cache = {};
     cache = unpackObject(a, cache);
     cache = unpackObject(b, cache);
     return cache;
 }
-{% endhighlight %}
+```
 
 The unpackObject function then iterates the new object. It checks for a value in each property, if one exists it then checks the cache variable for the existence of that property. If it doesn't exist, we add a new property to the cache variable, with the value from the unpacked object.
 
 If the property does exist, and is the same type in both objects, we either send it back through the merge function (if it's an object), or we add the value to the existing property in the cache variable.
 
-{% highlight js %}
+```js
 function unpackObject (a, cache) {
     for (prop in a) {
         if (a.hasOwnProperty(prop)) {
@@ -57,7 +57,7 @@ function unpackObject (a, cache) {
     }
     return cache;
 }
-{% endhighlight %}
+```
 
 And the outcome? In this case it's an array of weather forecast objects that previous existed as nested objects in the API response, which can then be iterated, averaged, and rendered.
 
