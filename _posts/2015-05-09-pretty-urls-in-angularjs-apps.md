@@ -10,6 +10,10 @@ In the interests of cleanliness, ease of access and (apparently) crawlability, i
 
 First, you'll need to inject $locationProvider into your app config, and set HTML5 mode to true:
 
+```js
+$locationProvider.html5Mode(true);
+```
+
 Still with me? I hope so.
 
 That gets rid of the hash in your URLs, but your server is now going to look for content at all your app's routes, so your AngularJs routing is going to fail and you'll drown in a sea of 404s.
