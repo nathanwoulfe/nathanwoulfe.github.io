@@ -22,7 +22,7 @@ You now need to add some server-side magic, to serve up your index.html page to 
 
 I'm serving my content from an Apache environment, so added the below to my .htaccess, and everything works like a charm:
 
-```
+```apache
 RewriteEngine on
 #Don't rewrite files or directories
 RewriteCond %{REQUEST_FILENAME} -f [OR]
