@@ -14,18 +14,18 @@ What you can do if you're using SASS or a similar CSS preprocessor, is build the
 
 Say we needed this:
 
-{% highlight sass %}
+```sass
 .week-view .hour-block:nth-of-type(1)::before { content: '7am'; }
 .week-view .hour-block:nth-of-type(2)::before { content: '8am'; }
 .week-view .hour-block:nth-of-type(3)::before { content: '9am'; }
 .week-view .hour-block:nth-of-type(4)::before { content: '10am'; }
-{% endhighlight %}
+```
 
 And so on for a 24-period. That's a painful amount of CSS to be writing - particularly when something needs to change, which of course it will.
 
 Instead, we do this:
 
-{% highlight sass %}
+```sass
 .week-view .hour-block {
     @for $i from 1 through 24 {
         &:nth-of-type(#{$i})::before {
@@ -36,13 +36,13 @@ Instead, we do this:
         }                      
     }
 }
-{% endhighlight %}
+```
 
 Sweet, yeah? It's nothing overly complex - the loop renders the selector, then determines the correct suffix (am or pm) and then calculates the hour value before rendering the lot.
 
 Or, we could do something like this (caveat: the final CSS isn't ideal, but was required to work within the constraints of an existing system):
 
-{% highlight sass %}
+```sass
 @mixin depth($depth: 1) {
     $chain: '';
 
@@ -71,7 +71,7 @@ Or, we could do something like this (caveat: the final CSS isn't ideal, but was 
         }
     }
 }
-{% endhighlight %}
+```
 
 That's part of the SCSS from my [Stately package for Umbraco](https://our.umbraco.org/projects/backoffice-extensions/stately/) - it's positioning the Stately icons with respect the current nesting level of the main content tree.
 
@@ -81,14 +81,14 @@ The depth mixin is generating a chained selector to target nodes at any menu lev
 
 The first iteration of the loop will generate this:
 
-{% highlight sass %}
+```sass
 .umb-tree ul div[style*="padding-left"] + ul div[style*="padding-left"].stately-icon::before { left: 47px; }
-{% endhighlight %}
+```
 
 While the 10th iteration will generate this monstrosity:
 
-{% highlight sass %}
+```sass
 .umb-tree ul div[style*="padding-left"] + ul div[style*="padding-left"] + ul div[style*="padding-left"] + ul div[style*="padding-left"] + ul div[style*="padding-left"] + ul div[style*="padding-left"] + ul div[style*="padding-left"] + ul div[style*="padding-left"] + ul div[style*="padding-left"] + ul div[style*="padding-left"] + ul div[style*="padding-left"].stately-icon::before { left: 227px; }
-{% endhighlight %}
+```
 
 I said earlier, I was writing this styling bound by the constraints that exist in the Umbraco back end - I had to find a way of calculating the menu depth without resorting to adding extra markup to the content tree. Using a loop to generate the CSS means that while the output isn't the most elegant, it's simple to manage and update if/when required.
