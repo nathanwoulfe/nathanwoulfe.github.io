@@ -14,7 +14,7 @@ It's nothing earth-shattering, but works really nicely for the application.
 
 Until I started playing with it on mobile. Despite having set overflow-x: hidden, I was still getting the horizontal scroll bar, which then made it possible to zoom out and view all the page content - that which should be off-screen and hidden, and the current selected content item. Absolutely not desired behaviour.
 
-Simple fix? Add user-scalable=no to the page metadata. Nope, still overflowing.
+Simple fix? Add `user-scalable=no` to the page metadata. Nope, still overflowing.
 
 Turns out, browsers that parse the meta-viewport tag also ignore overflow when it's set on the body or html element.
 
