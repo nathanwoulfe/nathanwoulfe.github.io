@@ -12,7 +12,7 @@ Make sense? Good. The plan is this - from a start color, an end color and a numb
 
 So, first, we'll define our variables and use some built-in SCSS magic to extract the RGB values from our hex color code:
 
-{% highlight sass %}
+```sass
 $start: #1976D2;
 $end: #388E3C;
 
@@ -25,11 +25,11 @@ $eG: green($end);
 $eB: blue($end); 
     
 $steps: 12;
-{% endhighlight %}
+```
 
 Once we've defined our start and end points, we can start iterating.
 
-{% highlight sass %}
+```sass
 @for $i from 1 through $steps {        
     &:nth-child(#{$i}){
         $r: interpolate($sR, $eR, $i, $steps);
@@ -41,20 +41,20 @@ Once we've defined our start and end points, we can start iterating.
         // do what ever we want with $color...
     }
 }
-{% endhighlight %}
+```
 
 To build out the color value for each step, we need to get our math on - to be honest, I'm not sure what the function is actually doing, I found it online. What does matter though is that it returns the values we need for the given step. It's essentially just incrementing the R, G and B values based on the current step, I think.
 
 The function below returns its output back to the loop above, which renders our actual styles.
 
-{% highlight sass %}
+```sass
 @function interpolate($begin, $end, $step, $max) {
     @if ($begin < $end) {
         @return round((($end - $begin) * ($step / $max)) + $begin);
     }               
     @return round((($begin - $end) * (1 - ($step / $max))) + $end);    
 }
-{% endhighlight %}
+```
 
 The alternative is to hard-code the color values for each step, which is not only painful but completely insane. What happens when you need to change the number of items, or your designer mate decides the base color should be turquoise instead of royal blue? Pain. That's what.
 
