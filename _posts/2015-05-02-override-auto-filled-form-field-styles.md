@@ -12,7 +12,7 @@ You could choose to disable auto filling, but that's introducing a usability iss
 
 I'm using SASS and AngularJS in my project, hence the syntax and extra selectors, but the gist of it should be obvious.
 
-{% highlight sass %}
+```sass
 $validColor: #78FA89;
 $invalidColor: #FA787E;
 
@@ -31,7 +31,7 @@ input, textarea {
         }
     }
 }
-{% endhighlight %}
+```
 
 Chrome won't let us override the background color, so the box-shadow essentially overlays our color over it.
 
