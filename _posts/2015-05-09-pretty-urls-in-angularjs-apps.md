@@ -22,4 +22,20 @@ You now need to add some server-side magic, to serve up your index.html page to 
 
 I'm serving my content from an Apache environment, so added the below to my .htaccess, and everything works like a charm:
 
+{% highlight apache %}
+
+RewriteEngine on
+
+# Don't rewrite files or directories
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Rewrite everything else to index.html to allow html5 state links
+
+RewriteRule ^ index.html [L]
+
+{% endhighlight %}
+
 There's a suite of examples for different server set ups over at the [Angular-UI repo on Github](https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions#how-to-configure-your-server-to-work-with-html5mode).
