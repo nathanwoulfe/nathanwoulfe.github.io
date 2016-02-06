@@ -14,5 +14,11 @@
   }
   a[href] {
     background:#29484a;
+    text-decoration:none;
+    
+    &:hover {
+      text-decoration:none;
+      background:#2a3f4b;
+    }
   }
 }
