@@ -2,14 +2,15 @@
   display:block;
   max-width:1100px;
   text-align:right;
+  margin-top:0;
+  margin-bottom:60px;
   
   *:first-child, *:last-child {
     padding:5px;
     background:rgba(0,0,0,0.85);
     color:#fff;
   }
-  
-  a {
+  a[href] {
     background:#29484a;
   }
 }
