@@ -8,7 +8,7 @@ layout: default
   </div>
 </div>
 <div class="row latest-items home-items">
-  {% for post in site.posts %}
+  {% for post in paginator.posts %}
     <div class="col-sm-6 col-md-4 overlay-">
       <a href="{{ site.baseurl }}{{ post.url }}">
         <h4>{{ post.title }}</h4>
