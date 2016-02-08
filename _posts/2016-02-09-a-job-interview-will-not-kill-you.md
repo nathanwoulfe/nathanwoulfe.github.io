@@ -1,7 +1,7 @@
 ---
 layout: post
-category: blog
 title: A job interview will not kill you
+category: blog
 ---
 
 A job interview can feel a lot like a police interrogation, (hopefully) minus the bright lights, handcuffs and lawyers.
