@@ -39,6 +39,7 @@ paginate: 12
 # !! You don't need to change any of the configuration flags below !!
 #
 
+# Permalink structure
 permalink: /:categories/:title/
 
 # The release of Jekyll Now that you're using
