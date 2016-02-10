@@ -8,22 +8,13 @@ layout: default
   </div>
 </div>
 
-<div class="main-content-row overview">
-  <div class="row">
-    <!--div class="col-xs-12"-->
-     {% for post in site.categories['projects'] %}
-        <!--<section>
-         <h4><a href="{{ post.url }}">{{ post.title}}</a></h4>
-         <span>{{ post.date | date_to_string }}</span>
-         {{ post.excerpt }}
-         <a href="{{ post.url }}" class="btn btn-default">More</a>
-       </section-->
+<div class="row latest-items home-items">
+   {% for post in site.categories['projects'] %}
     <div class="col-sm-6 col-md-4 overlay-">
       <a href="{{ site.baseurl }}{{ post.url }}">
         <h4>{{ post.title }}</h4>
       </a>
     </div>       
-      {% endfor %}
-    <!--/div-->
-  </div>
+    {% endfor %}
+  <!--/div-->
 </div>
