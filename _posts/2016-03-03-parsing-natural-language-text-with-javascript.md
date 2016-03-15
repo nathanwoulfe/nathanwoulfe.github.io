@@ -44,7 +44,9 @@ Which didn't turn out to be too tricky at all - funny how a bit of clear thinkin
 
 First up, let's turn those `and` and `or` instances into something useful:
 
-````var pre = item.prerequisites.replace(/\s(or)$/gi, '').replace(/and/gi, '&&').replace(/or/gi, '||');````
+```js
+var pre = item.prerequisites.replace(/\s(or)$/gi, '').replace(/and/gi, '&&').replace(/or/gi, '||');
+```
 
 The first replace manages instances where a string has a trailing `or`. Yup, it's not the cleanest of data.
 
@@ -58,7 +60,7 @@ By treating these as regular expressions, I can manage plurals and variants rela
 
 So once we've done that, we can evaluate the string and see what we get back. In case of errors, where the string doesn't evaluate and there are no course or program codes in the string, I'm setting the flag to true, along with an additional flag to display a warning in the UI - it's never going to be possible to capture all scenarios through string parsing, but a decent fallback means this doesn't really matter.
 
-````
+```js
 try {
     valid = eval(pre);
 } catch (e) {
@@ -69,6 +71,6 @@ try {
         valid = false;
     }
 }
-````
+```
 
 Is it foolproof? Absolutely not, someone will always be able to build a more foolish fool. But what it does do is handle 95% of scenarios elegantly, while providing a robust fallback for the outlying cases.
