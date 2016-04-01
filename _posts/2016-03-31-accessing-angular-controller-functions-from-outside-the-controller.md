@@ -15,7 +15,7 @@ That's all well and good, until the form becomes more complicated. What if the f
 We can access the controller scope by grabbing one of its elements, and simply asking for it:
 
 ````js
-var elm = angular.element(document.querySelectorAll('.crm-form-widget')[0])
+var elm = angular.element(document.querySelectorAll('.selector')[0]);
 var scope = elm.scope();
 ````
 
