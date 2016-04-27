@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: blog,projects
+categories: blog, projects
 title: Identifying the problem - the birth of PieMan
 ---
 
