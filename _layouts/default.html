@@ -34,33 +34,32 @@
 
     {% include analytics.html %}
     <script>
-      
-      var body = document.getElementsByTagName('body')[0],
-        navBtn = document.querySelectorAll('nav button')[0],
-        _checkWidth = (function checkWidth () {     
-          
-          if (window.innerWidth > 767) {
-  
-            var h1Height = window.innerHeight * 0.75;
-          
-            document.onscroll = function() {
-              if (body.scrollTop > h1Height && window.innerWidth > 767) {
-                body.setAttribute('class', 'nav-in');
-              } else {
-                body.setAttribute('class', '');
-              }
-            };
-          }
-          return checkWidth;
-        })();
-        
-      navBtn.addEventListener('click', function() {
-        body.className = body.className.indexOf('nav-in') !== -1 ? '' : 'nav-in';        
-      });
-      
-      window.onresize = function () { _checkWidth(); };
-      
       (function() {
+        var body = document.getElementsByTagName('body')[0],
+          navBtn = document.querySelectorAll('nav button')[0],
+          _checkWidth = (function checkWidth () {     
+            
+            if (window.innerWidth > 767) {
+    
+              var h1Height = window.innerHeight * 0.75;
+            
+              document.onscroll = function() {
+                if (body.scrollTop > h1Height && window.innerWidth > 767) {
+                  body.setAttribute('class', 'nav-in');
+                } else {
+                  body.setAttribute('class', '');
+                }
+              };
+            }
+            return checkWidth;
+          })();
+          
+        navBtn.addEventListener('click', function() {
+          body.className = body.className.indexOf('nav-in') !== -1 ? '' : 'nav-in';        
+        });
+        
+        window.onresize = function () { _checkWidth(); };
+
         var overlays = document.querySelectorAll('.overlay-'),
           charArr = ['a','b','c','d'],
           i;
@@ -70,6 +69,7 @@
             x = Math.floor(Math.random() * 3) + 1
           o.className += ' overlay-' + charArr[x];
         }
+        
       })();
     </script>
     
