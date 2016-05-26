@@ -106,7 +106,7 @@ p {
     }
 }
 
-div + p {
+div ~ p {
 	margin-top:2rem;
 	
 	@include min768 {
