@@ -20,7 +20,7 @@ Remember how I said I think I have a good understanding of CSS? Border radius is
 
 Given that, we can create our bookish corners like so:
 
-<p data-height="265" data-theme-id="0" data-slug-hash="NrKJjO" data-default-tab="result" data-user="nathanwoulfe" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/nathanwoulfe/pen/NrKJjO/">NrKJjO</a> by Nathan Woulfe (<a href="http://codepen.io/nathanwoulfe">@nathanwoulfe</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<p data-height="500" data-theme-id="0" data-slug-hash="NrKJjO" data-default-tab="result" data-user="nathanwoulfe" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/nathanwoulfe/pen/NrKJjO/">NrKJjO</a> by Nathan Woulfe (<a href="http://codepen.io/nathanwoulfe">@nathanwoulfe</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 Setting a slightly different radius for each page makes things look a little more natural.
@@ -29,7 +29,7 @@ What's missing though, is lighting. We need some gradients to add a bit of depth
 
 Enter linear gradients:
 
-<p data-height="265" data-theme-id="0" data-slug-hash="dXbrVW" data-default-tab="result" data-user="nathanwoulfe" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/nathanwoulfe/pen/dXbrVW/">dXbrVW</a> by Nathan Woulfe (<a href="http://codepen.io/nathanwoulfe">@nathanwoulfe</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<p data-height="500" data-theme-id="0" data-slug-hash="dXbrVW" data-default-tab="result" data-user="nathanwoulfe" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/nathanwoulfe/pen/dXbrVW/">dXbrVW</a> by Nathan Woulfe (<a href="http://codepen.io/nathanwoulfe">@nathanwoulfe</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 Things still look a bit flat down the bottom, and a real book would have page-spread on the outer edges, but it's not a bad representation. Using gradients in the background adds a touch of depth, and the elliptical radiuses (radii?) make things look a little more natural.
