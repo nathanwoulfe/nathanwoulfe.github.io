@@ -1,7 +1,7 @@
 ---
-layout:post
-category:blog
-title:Customising Umbraco without touching core files
+layout: post
+category: blog
+title: Customising Umbraco without touching core files
 ---
 
 One of Umbraco's greatest strengths is that it is easily customisable and extensible. 
