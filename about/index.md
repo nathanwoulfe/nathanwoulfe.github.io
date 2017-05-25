@@ -9,7 +9,7 @@ I'm a Level 2 certified Umbraco developer with a passion for user interface deve
 
 I like to do things differently but not at the expense of best practices. 
 
-I work full-time in web development within the tertiary education sector. Our team remains as nimble as possible within what is essentially a corporate environment, balancing internal machinations with the needs of our internal and external users (and our desire to build cool features).
+I work full-time in web development within the tertiary education sector, building web stuff for [USC](www.usc.edu.au)
 
 I'm available for freelance and consulting work and am always happy to discuss potential projects. 
 
