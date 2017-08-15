@@ -1,0 +1,185 @@
+---
+layout: post
+title: Adding chapter navigation to YouTube video embeds
+category: post
+---
+
+Remember DVDs? Rember how they helpfully let you jump from predetermined chapter to predetermined chapter?
+
+YouTube's annotations functionality basically achieves the same thing - click to scrub to a point in the video. Unfortunately, YouTube has deprecated annotations, which means no more jumping around (at least on the YouTube.com platform).
+
+For embedded videos, all is not lost. We can build ourselves a nifty little navigation tool, using the YouTube iFrame API.
+
+For this example, I'm working in a larger AngularJs app, so the obvious solution is to create a directive. Here's a quick, largely empty, scaffold:
+
+```javascript
+(function() {
+  'use strict'
+
+  function directive() {
+
+    var embed = {
+      restrict: 'E',
+      replace: true,
+      template: [
+        '<div class="video-with-timeline">',
+        '  // more magic html',
+        '</div>'
+      ].join(''),
+      link: link
+    };
+
+    function link(scope) {
+      // do magic stuff
+    }
+
+    return embed;
+  }
+
+  angular.module('app').directive('youtubeEmbed', directive);
+}());
+```
+
+We'll add this to our page like so:
+
+```html
+<youtube-embed></youtube-embed>
+```
+
+Which for now will simply render an empty `div` element, with the `class` attribute set to `video-with-timeline`. Cool bananas.
+
+To add our navigation, we'll need to provide the directive with some additional data, as scope properties:
+
+```javascript
+var embed = {
+  restrict: 'E',
+  replace: true,
+  scope: {
+    youtube: '=',
+    summary: '=',
+    timeline: '=',
+    title: '='      
+  },
+  template: [
+    '<div class="video-with-timeline">',
+    '  // more magic html',
+    '</div>'
+  ].join(''),
+  link: link
+};
+```
+
+We'll send the video id as `youtube`, some summary text as `summary`, the video title as `title`, with `timeline` holding a JSON object representing the chapters:
+
+```javascript
+timeline: [{
+    time: 8,
+    label: 'This is a label'
+  }, {
+    time: 23,
+    label: 'This is another label'
+  }, {
+    time: 36,
+    label: 'Yup. A label'
+  }, {
+    time: 50,
+    label: 'Not a label'
+  }];
+```
+
+The `time` property is in seconds. We'll use this object to build out the template for our directive:
+
+```javascript
+template: [
+  '<div class="video-with-timeline">',
+  '  <div class="embed-responsive embed-responsive-16by9">',
+  '    <div id="player"></div>',
+  '  </div>',
+  '  <h4 ng-bind="title"></h4>',
+  '  <p ng-bind="summary"></p>',
+  '  <ul class="video-timeline">',
+  '    <li ng-repeat="t in timeline track by $index" ng-class="{\'active\' : $index === activeSlide - 1}" ng-click="scrub(t.time)" title="{{ t.label }}"><span>{{ t.label }}</span></li>',
+  '  </ul> {{ elapsed }}',
+  '</div>'
+].join('')
+```
+
+There's some Bootstrap classes sprinkled in there to ensure our embedded iframe always looks slick, then we render the title and summary for the video, followed by the timeline. We've bound some click handlers to the timeline `li` elements, which need to be wired up in the directive link function:
+
+```javascript
+function link(scope) {
+  // var
+  var time, player, elapsed = 0;
+  scope.activeSlide = 0;
+
+  // track the elapsed time and update the active chapter li element
+  // the timeline data is provided to the directive in scope.timeline
+  function startWatch() {
+    time = setInterval(function() {
+      elapsed = player.getCurrentTime();
+
+      scope.activeSlide = scope.timeline.map(function(v, i) {
+        var min = i === 0 ? scope.timeline[0].time : v.time;
+        return elapsed >= min;
+      }).lastIndexOf(true) + 1;
+
+      scope.$apply();
+
+    }, 100);
+  }
+
+  function stopWatch() {
+    clearTimeout(time);
+  }
+
+  // when everything is loaded, start playing the video
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
+
+  // observe the elapsed time to set the correct chapter as active - this happens in startWatch
+  function onStateChange(e) {
+    if (e.data == YT.PlayerState.PLAYING) {
+      startWatch();
+    } else {
+      stopWatch();
+    }    
+  }
+
+  // clicking a timeline chapter sets the current play time
+  scope.scrub = function(time) {
+    player.seekTo(time);
+  }
+
+  // create the player object with sane default values
+  // also binds events - we track inside the callback functions
+  player = new YT.Player('player', {
+    height: '390',
+    width: '640',
+    videoId: scope.youtube,
+    playerVars: {
+      'autoplay': 1,
+      'rel': 0,
+      'modestbranding': 1,
+      'showinfo': 0
+    },
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onStateChange
+    }
+  });
+}
+```
+
+For this example, assume the YouTube API has been loaded elsewhere, and we can assume it's available and ready to rock. I'll gloss over the initialisation of the player object, but we're just setting some sane defaults and configuring a pair of event handlers - being `onReady` and `onStateChange`.
+
+Back in our timeline template, clicking a `li` item calls the `scrub` function, which sets the player time. Easy.
+
+While the video is playing, the `startWatch` function keeps track of the elapsed time, by polling `player.getCurrentTime()` every 100ms. 
+
+Inside `startWatch`, I'm finding all the timeline objects where the time property is less than the elapsed time, grabbing the last one and using that index to set the class on the active item in the template. Sweet!
+
+Chapters! Just like a DVD! 1998!
+
+
+
