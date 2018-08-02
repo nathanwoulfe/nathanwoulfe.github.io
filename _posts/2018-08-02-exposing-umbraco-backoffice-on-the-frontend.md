@@ -24,6 +24,8 @@ Not an unreasonable concept by any measure.
 
 Not unreasonable, and potentially solved by allowing previewing outside the backoffice, and shoe-horning that into Plumber for the workflow goodness.
 
+A shout-out is due here, to Dirk at netaddicts for pointing me in the right direction to get started. H5YR.
+
 So. How do we make it work?
 
 To display a preview, Umbraco builds a snippet of XML to represent the node and its ancestors. Essentially a mini cache (remember, umbraco.config is just a big old XML file).
