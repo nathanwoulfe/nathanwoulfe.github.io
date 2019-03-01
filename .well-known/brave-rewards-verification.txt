@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: nathanw.com.au
+Token: 426429a1f06c9c67f126979558724843c27ba5526b52b3a264e78f950a1bad1b
