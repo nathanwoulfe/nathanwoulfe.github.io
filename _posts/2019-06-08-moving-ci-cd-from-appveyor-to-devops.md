@@ -98,7 +98,7 @@ While DevOps provides a built-in testing task using Visual Studio Test Runner, t
 
 The YAML config for testing looks simple, it runs a PS file at the given location, but there’s a bit going on in that file.
 
-{% gist b44dfe0654b5fb3cc4db3d06279247f4.js %}
+<script src="https://gist.github.com/nathanwoulfe/b44dfe0654b5fb3cc4db3d06279247f4.js"></script>
 
 The PS magic does the following:
 
