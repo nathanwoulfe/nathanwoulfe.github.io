@@ -19,7 +19,7 @@ However, when I started work on porting Plumber from Umbraco 7 to 8, I decided I
 
 Appveyor’s free tier doesn’t permit private repositories, but DevOps does. Hence partial motivation for the shift.
 
-## CI/CD with Appveyor
+### CI/CD with Appveyor
 
 First, let’s look at the lay of the Appveyor land – how my previous builds worked, and which parts of the process were platform-specific and which were regular old MSBuild tasks.
 
@@ -48,7 +48,7 @@ Taking a step back, Appveyor isn’t really doing the heavy lifting, it’s kick
 
 With that in mind, let’s look at how to replicate the same build on DevOps.
 
-## CI/CD with DevOps
+### CI/CD with DevOps
 
 After creating an account, you’ll need a project to work from. On the DevOps dashboard, over on the right, click the Create Project button. Give it a name, maybe a description, and click Create. Congratulations, you’re using DevOps.
 
