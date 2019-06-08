@@ -25,7 +25,7 @@ First, let’s look at the lay of the Appveyor land – how my previous builds w
 
 Appveyor’s builds can be fully configured online via the GUI, or by adding a YAML file to the repository (same goes for DevOps). I use the latter, and it looks something like this:
 
-/// yaml
+<script src="https://gist.github.com/nathanwoulfe/bf3e4c2e1d43d9596b7163700326c466.js"></script>
 
 Is it perfect? Hell no. Does it work? Hell yes. This could likely be improved a heap, and can definitely be expanded on, but for what I need to do, it’s fine.
 
@@ -62,7 +62,7 @@ While the build config is stored as a YAML file in the root of your repository, 
 
 So how does that look compared to my Appveyor build? It’s more complex, no doubt, but it’s also doing a lot more. Because I still wanted to leverage the awesomeness that came with `build.bat`, some of steps are a bit messy and can probably be improved. Time for that later.
 
-/// yaml
+<script src="https://gist.github.com/nathanwoulfe/d7a67592ca07e79810e3184475c9e754.js"></script>
 
 The first three sections are pretty clear – the build is triggered only by pushes to master or tagged commits, will run on the latest Windows VM, and requires a set of variables (`buildVersion` here serves the same purpose as `build` in the Appveyor YAML).
 
