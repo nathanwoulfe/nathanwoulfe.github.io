@@ -15,8 +15,7 @@ layout: default
 <div class="main-content-row">
   <div class="row">
     <div class="col-xs-12">
-      <span>Last updated: {{ page.last_modified_at }}</span>
-      {{ page.path | file_date | date_to_string }}
+      <span>Last updated: {{ page.path | file_date | date: "%-d %B %Y" }}</span>      
       {{ content }}      
     </div>
   </div>
