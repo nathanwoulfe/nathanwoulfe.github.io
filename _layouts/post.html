@@ -15,7 +15,8 @@ layout: default
 <div class="main-content-row">
   <div class="row">
     <div class="col-xs-12">
-      {{ content }}
+      Last updated: {{ page.last_modified_at | date: "%d %B %Y" }}
+      {{ content }}      
     </div>
   </div>
 </div>
