@@ -20,7 +20,7 @@ Most importantly, the content app has a new backoffice icon. Everyone loves a go
 
 The content app has seen a bit of UI love, to make consistent use of color and better use of the available screen territory. 
 
-![app](https://github.com/nathanwoulfe/nathanwoulfe.github.io/blob/master/p-app.jpg?raw=true)
+![app](https://github.com/nathanwoulfe/nathanwoulfe.github.io/blob/master/images/p-app.png?raw=true)
 
 ### Active workflow view
 
@@ -32,11 +32,17 @@ Viewing changes is a licensed feature, because if I gave it all away for nothing
 
 View changes uses a familiar interface (see: Umbraco rollback) to highlight the changes between the current worflowed document and the current live version. This works for old workflow processes too, showing the changes before and after the workflow was approved. Neat!
 
+![app changes](https://github.com/nathanwoulfe/nathanwoulfe.github.io/blob/master/images/p-changes.png?raw=true)
+
 The activity column also sees some UI polish, with clearer nesting of related tasks (ie the back-and-forth between two users when a workflow task is rejected and resubmitted multiple times).
 
 When initiating a new workflow, it's now possible to set a scheduled date for releasing the changes. If the date passes before the workflow is approved, the changes will be released when the workflow is completed.
 
+![app](https://github.com/nathanwoulfe/nathanwoulfe.github.io/blob/master/images/p-date1.png?raw=true)
+
 This was previously available using Umbraco's built-in scheduling options, but was a bit disconnected from the rest of the workflow interface. Changes here make the scheduling options available in the right place at the right time, so user don't need to go hunting.
+
+![app](https://github.com/nathanwoulfe/nathanwoulfe.github.io/blob/master/images/p-scheduling.png?raw=true)
 
 The scheduling status for a given workflow is displayed in the content app and all dashboard task lists (history, pending tasks, user submissions).
 
@@ -46,9 +52,13 @@ More UI updates, again with the three columns, which works pretty nicely given t
 
 Content approval flow has a new option for removing all stages with a single button click. Great for updating workflows with lots of groups.
 
+![app](https://github.com/nathanwoulfe/nathanwoulfe.github.io/blob/master/images/p-config.png?raw=true)
+
 ## Notification banner
 
 Where previously the workflow state for the current node was a snip of text next to the footer buttons, it's now a much more prominent banner at the top of the content editor.
+
+![app](https://github.com/nathanwoulfe/nathanwoulfe.github.io/blob/master/images/p-banner.png?raw=true)
 
 It makes much more sense that editors see this message before the content because it will impact their subsequent actions - they'll know the node is in a workflow before starting to make changes.
 
@@ -60,9 +70,13 @@ Are better looking than ever before. They've been simplified to track approved, 
 
 Click-throughs from the chart header tiles work again, landing on a history view for the selected workflow status. History is at the task level rather than the instance level, so is extra detailed.
 
+![app](https://github.com/nathanwoulfe/nathanwoulfe.github.io/blob/master/images/p-chart.png?raw=true)
+
 ## Dashboards 
 
 Perhaps one of the most useful new features in 1.2.0 is the ability to action workflows from the dashboard. No longer will users need that extra click to load the content node, they can process pending tasks from the comfort of the dashboard.
+
+![app](https://github.com/nathanwoulfe/nathanwoulfe.github.io/blob/master/images/p-dashboard.png?raw=true)
 
 Where previously the right-most cell in the dashboard row held an action button (cancel only), and a button for opening an overlay detailing the current workflow, there's now a single Detail button.
 
