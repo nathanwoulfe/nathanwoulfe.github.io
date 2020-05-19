@@ -159,3 +159,9 @@ export class ImpersonationBanner {
 The new syntax is a bit more succinct, and abstracts away a lot of the AngularJs specifics - notice DI in the modular version is managed in the constructor only, no need for the `angular.module...` declaration? DI is managed via the `ngInject` package, which means one less AngularJs bit to worry about.
 
 There are some new files required to create modules (AngularJs modules, not ES6 modules) for components, directives, services et all, but that's a good thing. Modular code is easier to manage.
+
+## Fin
+
+And that's the current state of play in the Plumber workflow world. A substantial update, a few new features, a prettier workspace, and a more robust product. All the tests pass. Is it perfect? Not even close, but better than v1.1.3.
+
+It's on nuget now => `Install-Package Plumber.Workflow`
