@@ -20,6 +20,8 @@ Most importantly, the content app has a new backoffice icon. Everyone loves a go
 
 The content app has seen a bit of UI love, to make consistent use of color and better use of the available screen territory. 
 
+![app](https://github.com/nathanwoulfe/nathanwoulfe.github.io/blob/master/p-app.jpg?raw=true)
+
 ### Active workflow view
 
 On wider screens the dashboard presents in three columns, from left being actions, description and activity. Of course this layout is responsive and wraps beautifully into a double or single column layout depending on the device.
