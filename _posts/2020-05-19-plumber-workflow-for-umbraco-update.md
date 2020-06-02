@@ -80,11 +80,14 @@ Perhaps one of the most useful new features in 1.2.0 is the ability to action wo
 
 Where previously the right-most cell in the dashboard row held an action button (cancel only), and a button for opening an overlay detailing the current workflow, there's now a single Detail button.
 
-The Detail button launches a big old infinited editor view, loading the Active workflow view from the content app.
+The Detail button launches a big old infinite editor view, loading the Active workflow view from the content app.
 
 If the current user has permission to action the workflow, they'll have the controls to do so, along with other useful data about the workflow - the change description, current status, scheduling (if any) and the workflow activity list.
 
 This means users won't have to engage with the actual content if they don't feel the need. They can review and action tasks quickly and easily, with their actions syncing to other user's dashboards via the magic of signalR.
+
+## Offline approval
+This now works. I think. By fiddling with cookies and authentication, it's possible for workflow tasks to be reviewed and approved without the user logging in to Umbraco. It won't work with multi-variant workflows (yet), but that's not really an issue since no one has purchased a license to enable this feature.
 
 ## Other stuff
 
@@ -97,32 +100,6 @@ The entire javascript application has been rewritten using ES6 modules, and the 
 Shifting to modules means a looser coupling with AngularJs, which probably isn't a big deal given that's what Umbraco's built on and likely will be for the mid-term (my opinion), but it's comforting to know that I could feasibly move to a new framework without too many tears.
 
 Just for fun, here's a example of the changes from a typical AngularJs directive, to the modular version:
-
-```js
-export class ImpersonationBanner {
-    static name = 'impersonationBanner';
-
-    constructor($compile) {
-        this.$compile = $compile;
-        this.restrict = 'A';
-    }
-
-    link(scope, element) {
-        const currentSubscription = Umbraco.Sys.ServerVariables.PlumberSubscription;
-        scope.type = currentSubscription.type;
-
-        if (currentSubscription.isImpersonating) {
-            const template = ` 
-                <div class="alert alert-workflow">
-                    <i class="icon icon-alert"></i>
-                    <p>Plumber license impersonation is active. All <span class="umb-badge">{{ type }}</span> features are available on non-production domains only.</p>
-                </div>`;
-                
-            element.prepend(this.$compile(template)(scope));
-        }
-    }
-}
-```
 
 ```js
 (() => {
@@ -154,6 +131,31 @@ export class ImpersonationBanner {
     angular.module('plumber.directives').directive('impersonationBanner', ['$compile', impersonationBanner]);
 
 })();
+```
+```js
+export class ImpersonationBanner {
+    static name = 'impersonationBanner';
+
+    constructor($compile) {
+        this.$compile = $compile;
+        this.restrict = 'A';
+    }
+
+    link(scope, element) {
+        const currentSubscription = Umbraco.Sys.ServerVariables.PlumberSubscription;
+        scope.type = currentSubscription.type;
+
+        if (currentSubscription.isImpersonating) {
+            const template = ` 
+                <div class="alert alert-workflow">
+                    <i class="icon icon-alert"></i>
+                    <p>Plumber license impersonation is active. All <span class="umb-badge">{{ type }}</span> features are available on non-production domains only.</p>
+                </div>`;
+                
+            element.prepend(this.$compile(template)(scope));
+        }
+    }
+}
 ```
 
 The new syntax is a bit more succinct, and abstracts away a lot of the AngularJs specifics - notice DI in the modular version is managed in the constructor only, no need for the `angular.module...` declaration? DI is managed via the `ngInject` package, which means one less AngularJs bit to worry about.
