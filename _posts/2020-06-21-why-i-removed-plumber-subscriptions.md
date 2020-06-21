@@ -10,7 +10,7 @@ After a fair bit of thought and plenty of time with the Umbraco 8 version in the
 
 Why? Of course I'll tell you why.
 
-For the most part, the free Plumber tier will solve a site's workflow needs. It's a complete workflow engine, with pretty much all the bells and whistles. The number of workflow groups is limited, and some advanced features are disabled, but for many|most sites, it will be plenty powerful.
+For the most part, the free Plumber tier will solve a site's workflow needs. It's a complete workflow engine, with pretty much all the bells and whistles. The number of workflow groups is limited, and some advanced features are disabled, but for many/most sites, it will be plenty powerful.
 
 For those larger sites needing more approval groups, or document-type workflows, or conditional approvals, or non-logged-in approvals, or any of the other advanced features, licenses are available.
 
