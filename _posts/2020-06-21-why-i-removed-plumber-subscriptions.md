@@ -56,4 +56,8 @@ The licensing section will stay broken, but the license will continue to work. S
 
 I'm considering this a not-quite-graceful degradation. It's incentive to updated to 1.3.1, where everything is shiney and new and not broken. I was never one for making everything perfect in old browsers, instead leaving an incentive to update. This is a similar tack - break it just enought that the best course of action is to get the latest.
 
-That's as easy as a one-line NuGet command: `Update-Package Plumber.Workflow`. Do it.
+That's as easy as a one-line NuGet command: 
+
+`Update-Package Plumber.Workflow`. 
+
+Do it.
