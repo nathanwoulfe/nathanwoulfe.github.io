@@ -58,6 +58,6 @@ I'm considering this a not-quite-graceful degradation. It's incentive to updated
 
 That's as easy as a one-line NuGet command: 
 
-`Update-Package Plumber.Workflow`. 
+`Update-Package Plumber.Workflow`
 
 Do it.
