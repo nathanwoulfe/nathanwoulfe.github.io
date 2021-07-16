@@ -38,7 +38,7 @@ It wasn't a good time. Keeping both in sync through one patch release was painfu
 
 The alternative was a single branch generating a multi-targeted build. One common codebase, with conditional code blocks where required, and leaning on build tools to correctly package the right files for the right target framework.
 
-## Make it play nice
+##Make it play nice##
 
 For cases where implementation changes between V8 and V9, most can be managed through aliasing or creating implementing new interfaces in the V8 code.
 
@@ -96,7 +96,7 @@ While the multi-targeted approach can mean more code, and potentially more compl
 
 It's all in the one place, and with the right amount of abstraction, conditional blocks can be minimal.
 
-## Ugh. Naming.
+##Ugh. Naming.##
 
 That's all lovely and I'm back to one branch and one NuGet package to support both V8 and V9, but it leaves the biggest issue - naming.
 
@@ -110,13 +110,17 @@ With Umbraco 9 around the corner, it's ridiculous to have Plumber 1.x for Umbrac
 
 The plan, at the moment, is something like this:
 
- - The V7 version (Workflow.Umbraco on NuGet) will remain as is. It's not in active development, and will only see critical security fixes. The repository will be renamed to Plumber OG or Plumber Original Recipe or something equally foolish.
+- The V7 version (Workflow.Umbraco on NuGet) will remain as is. It's not in active development, and will only see critical security fixes. The repository will be renamed to Plumber OG or Plumber Original Recipe or something equally foolish.
 
- - The V8 and V9 versions (Plumber.Worklow) will no longer be Plumber2. It's just Plumber. Dropping the 2 means Plumber v2.0.0 makes sense, and will be the first multi-target release. v2.0.0 may release with Framework support before the Core version is complete.
+- The V8 and V9 versions (Plumber.Worklow) will no longer be Plumber2. It's just Plumber. Dropping the 2 means Plumber v2.0.0 makes sense, and will be the first multi-target release. v2.0.0 may release with Framework support before the Core version is complete.
 
- - The current V8 Plumber2 1.x branch (see, ridiculous) will cease development with the v1.6.3 patch release, which was released earlier today (convenient, yah?).
+- The current V8 Plumber2 1.x branch (see, ridiculous) will cease development with the v1.6.3 patch release, which was released earlier today (convenient, yah?).
 
 It's onwards and upwards, with a single codebase, easier maintenance and improved naming, which of course is the most important part.
 
+##Postscript##
+Seems I did a whoops in a merge/cherry-pick into the v8 branch, and included a change intended for v2. This means that the site URL and edit site URL settings (workflow > settings > notifications) are now required for generating emails. Without these settings, emails may be sent from 127.0.0.1 rather than the host site, which isn't much good to anyone.
 
+Previously these URLs were extracted from HttpContext, but that was proving unreliable and became overly complicated when dealing with background tasks (where no context exists), so it's much simpler to make the settings mandatory.
 
+Personally, I prefer explicit settings compared to magically deducing values in code - it's clearer for the user since it removes some of the black-boxiness, and of course this is all about me.
