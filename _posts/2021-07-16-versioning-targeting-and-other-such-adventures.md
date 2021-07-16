@@ -112,7 +112,7 @@ The plan, at the moment, is something like this:
 
 - The V7 version (Workflow.Umbraco on NuGet) will remain as is. It's not in active development, and will only see critical security fixes. The repository will be renamed to Plumber OG or Plumber Original Recipe or something equally foolish.
 
-- The V8 and V9 versions (Plumber.Worklow) will no longer be Plumber2. It's just Plumber. Dropping the 2 means Plumber v2.0.0 makes sense, and will be the first multi-target release. v2.0.0 may release with Framework support before the Core version is complete.
+- The V8 and V9 versions (Plumber.Workflow) will no longer be Plumber2. It's just Plumber. Dropping the 2 means Plumber v2.0.0 makes sense, and will be the first multi-target release. v2.0.0 may release with Framework support before the Core version is complete.
 
 - The current V8 Plumber2 1.x branch (see, ridiculous) will cease development with the v1.6.3 patch release, which was released earlier today (convenient, yah?).
 
