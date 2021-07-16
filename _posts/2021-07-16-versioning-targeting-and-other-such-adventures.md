@@ -38,7 +38,7 @@ It wasn't a good time. Keeping both in sync through one patch release was painfu
 
 The alternative was a single branch generating a multi-targeted build. One common codebase, with conditional code blocks where required, and leaning on build tools to correctly package the right files for the right target framework.
 
-# Make it play nice
+## Make it play nice
 
 For cases where implementation changes between V8 and V9, most can be managed through aliasing or creating implementing new interfaces in the V8 code.
 
@@ -96,7 +96,7 @@ While the multi-targeted approach can mean more code, and potentially more compl
 
 It's all in the one place, and with the right amount of abstraction, conditional blocks can be minimal.
 
-# Ugh. Naming.
+## Ugh. Naming.
 
 That's all lovely and I'm back to one branch and one NuGet package to support both V8 and V9, but it leaves the biggest issue - naming.
 
