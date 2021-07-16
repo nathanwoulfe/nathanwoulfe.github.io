@@ -38,8 +38,7 @@ It wasn't a good time. Keeping both in sync through one patch release was painfu
 
 The alternative was a single branch generating a multi-targeted build. One common codebase, with conditional code blocks where required, and leaning on build tools to correctly package the right files for the right target framework.
 
-##Make it play nice##
-
+## Make it play nice ##
 For cases where implementation changes between V8 and V9, most can be managed through aliasing or creating implementing new interfaces in the V8 code.
 
 If you've ever pondered the real-world application for interfaces in your code, here's a great example.
@@ -96,8 +95,7 @@ While the multi-targeted approach can mean more code, and potentially more compl
 
 It's all in the one place, and with the right amount of abstraction, conditional blocks can be minimal.
 
-##Ugh. Naming.##
-
+## Ugh. Naming. ##
 That's all lovely and I'm back to one branch and one NuGet package to support both V8 and V9, but it leaves the biggest issue - naming.
 
 I kinda stuffed up when Umbraco 8 launched - the original Umbraco 7 Plumber still exists, with its own versioning. For Umbraco 8, Plumber became Plumber2, starting afresh at v1.
@@ -116,7 +114,7 @@ The plan, at the moment, is something like this:
 
 It's onwards and upwards, with a single codebase, easier maintenance and improved naming, which of course is the most important part.
 
-##Postscript##
+## Postscript ##
 Seems I did a whoops in a merge/cherry-pick into the v8 branch, and included a change intended for v2. This means that the site URL and edit site URL settings (workflow > settings > notifications) are now required for generating emails. Without these settings, emails may be sent from 127.0.0.1 rather than the host site, which isn't much good to anyone.
 
 Previously these URLs were extracted from HttpContext, but that was proving unreliable and became overly complicated when dealing with background tasks (where no context exists), so it's much simpler to make the settings mandatory.
